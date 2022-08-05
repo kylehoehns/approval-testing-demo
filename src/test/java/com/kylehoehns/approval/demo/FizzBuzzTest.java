@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static com.kylehoehns.approval.demo.FizzBuzz.fizzBuzzLegacy;
-import static com.kylehoehns.approval.demo.FizzBuzz.fizzBuzzNew;
-import static org.junit.jupiter.api.Assertions.*;
+import static com.kylehoehns.approval.demo.FizzBuzz.fizzBuzzModern;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class FizzBuzzTest {
 
@@ -22,19 +22,23 @@ class FizzBuzzTest {
     assertArrayEquals(new String[]{"Buzz"}, fizzBuzzLegacy(5, 6));
   }
 
-  record FizzBuzzInputs(int start, int end){}
+  record FizzBuzzInputs(int start, int end) {
+  }
 
   @Test
   void testFizzBuzz_ApprovalTests() {
     Approvals.verifyAll(
-      new FizzBuzzInputs[]{
-        new FizzBuzzInputs(1, 1),
-        new FizzBuzzInputs(1, 2),
-        new FizzBuzzInputs(2, 4),
-        new FizzBuzzInputs(3, 8),
-        new FizzBuzzInputs(1, 20)
-      },
-      (fizzBuzzInputs -> Arrays.toString(fizzBuzzNew(fizzBuzzInputs.start, fizzBuzzInputs.end)))
+        new FizzBuzzInputs[]{
+            new FizzBuzzInputs(0, 3),
+            new FizzBuzzInputs(10, 0),
+            new FizzBuzzInputs(1, 1),
+            new FizzBuzzInputs(15, 16),
+            new FizzBuzzInputs(1, 4),
+            new FizzBuzzInputs(2, 5),
+            new FizzBuzzInputs(3, 6),
+            new FizzBuzzInputs(1, 100),
+        },
+        (fizzBuzzInputs -> Arrays.toString(fizzBuzzLegacy(fizzBuzzInputs.start, fizzBuzzInputs.end)))
     );
   }
 
