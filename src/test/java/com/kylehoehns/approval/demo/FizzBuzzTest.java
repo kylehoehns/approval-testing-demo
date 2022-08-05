@@ -38,7 +38,9 @@ class FizzBuzzTest {
             new FizzBuzzInputs(3, 6),
             new FizzBuzzInputs(1, 100),
         },
-        (fizzBuzzInputs -> Arrays.toString(fizzBuzzLegacy(fizzBuzzInputs.start, fizzBuzzInputs.end)))
+        input -> Arrays.toString(
+            fizzBuzzLegacy(input.start, input.end)
+        )
     );
   }
 
