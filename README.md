@@ -1,6 +1,6 @@
-## Approval Testing Demo
+## Blind Refactoring - Changing Code You Don't Understand
 
-Example code for adding tests to untested legacy code.
+Example code demonstrating usage of the Approval Tests library to quickly add tests to legacy code. 
 
 https://approvaltests.com/
 
