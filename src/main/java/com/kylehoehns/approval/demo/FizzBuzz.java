@@ -22,14 +22,10 @@ public class FizzBuzz {
         .toArray(String[]::new);
   }
 
-  public static String[] fizzBuzzLegacy(int a, int x) {
+  public static String[] fizzBuzz(int a, int x) {
     String fizZBuzz = null;
-    if (a < 1) {
-      return new String[0];
-    }
-    if (x < 1) {
-      return new String[0];
-    }
+    if (a < 1) return new String[0];
+    if (x < 1) return new String[0];
     if (a == x) {
       fizZBuzz = "";
       return new String[]{fizZBuzz};
@@ -39,15 +35,15 @@ public class FizzBuzz {
         if (a % 3 == 0) {
           fizZBuzz = "Fi" + "zz";
         }
-        if ((a % 5 == 0)) {
+        if (a % 5 == 0) {
           fizZBuzz = "Buzz";
         }
       }
       fizZBuzz = fizZBuzz != null ? fizZBuzz : new Integer(a).toString();
     }
-    return (fizZBuzz + Arrays.toString(fizzBuzzLegacy(a + 1, x)))
-        .replaceAll("\\]", "")
-        .split("\\[|,\\s*");
+    return (fizZBuzz + Arrays.toString(fizzBuzz(a + 1, x)))
+      .replaceAll("\\]", "")
+      .split("\\[|,\\s*");
   }
 
 }
