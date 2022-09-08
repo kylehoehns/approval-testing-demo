@@ -256,6 +256,9 @@ With the ApprovalTests framework, rename the output file from *.received.txt to 
 
 With quick and thorough test coverage you can now be confident that your changes will not break existing functionality.
 
+<img style="margin: auto" src="assets/happy.gif"/>
+
+
 ---
 layout: default
 ---
