@@ -2,7 +2,7 @@
 # try also 'default' to start simple
 theme: apple-basic
 layout: intro-image
-image: /public/head-in-box.jpg
+image: /head-in-box.jpg
 title: Blind Refactoring
 selectable: true
 ---
@@ -22,7 +22,7 @@ layout: default
     <p>The business needs an enhancement to its legacy FizzBuzz application</p>
     <p v-click="1">...that needs implemented today</p>
     <p v-click="2">...and there aren't any existing tests</p>
-    <img v-click="3" style="margin: auto" src="/public/adventure.gif"/>
+    <img v-click="3" style="margin: auto" src="/adventure.gif"/>
 </div>
 
 ---
@@ -79,7 +79,7 @@ git blame FizzBuzz.java
 
 <br />
 
-<img style="margin: auto" src="/public/cry.gif"/>
+<img style="margin: auto" src="/cry.gif"/>
 
 </v-click>
 
@@ -131,7 +131,7 @@ void givenAFizzBuzzStartThatIsLessThan1_whenIExecuteFizzBuzz_thenIShouldGetAnEmp
 ```
 
 <v-click>
-<img style="margin: auto" src="/public/insane.gif"/>
+<img style="margin: auto" src="/insane.gif"/>
 </v-click>
 
 ---
@@ -189,7 +189,7 @@ FizzBuzzTest.testFizzBuzz.received.txt
 
 Utilizing code coverage while running the tests allows us to see paths through the code we haven't tested yet.
 
-<img style="margin: auto" src="/public/code-coverage-1.png"/>
+<img style="margin: auto" src="/code-coverage-1.png"/>
 
 ---
 layout: default
@@ -355,7 +355,7 @@ layout: default
 
 # Output
 
-<img style="margin: auto" src="/public/code-coverage-2.png"/>
+<img style="margin: auto" src="/code-coverage-2.png"/>
 
 ---
 layout: default
@@ -414,7 +414,7 @@ public static String[] fizzBuzz(int start, int end) {
 }
 ```
 
-<img style="margin: auto" src="/public/activities.gif"/>
+<img style="margin: auto" src="/activities.gif"/>
 
 ---
 layout: default
@@ -422,9 +422,12 @@ layout: default
 
 # Takeaways
 
-- The business probably makes money from the code you're changing. 
-  - It may not be pretty, but that doesn't make it incorrect.
-- It's OK to not understand what a method does as long as you can guarantee you didn't accidentally change it.
+<br />
+
+## The business probably makes money from the code you're changing
+ - It may not be *pretty*, but that doesn't make it *incorrect*. 
+
+## It's OK to not understand what a method does as long as you can guarantee you didn't accidentally break it
 
 ---
 layout: default
@@ -441,4 +444,4 @@ layout: default
 
 <br />
 
-<img style="margin: auto" src="/public/finished.gif"/>
+<img style="margin: auto" src="/finished.gif"/>
