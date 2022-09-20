@@ -20,7 +20,7 @@ layout: default
     <p>The business needs an enhancement to its legacy FizzBuzz application</p>
     <p v-click="1">...that needs implemented today</p>
     <p v-click="2">...and there aren't any existing tests</p>
-    <img v-click="3" style="margin: auto" src="assets/adventure.gif"/>
+    <img v-click="3" style="margin: auto" src="/public/adventure.gif"/>
 </div>
 
 ---
@@ -77,7 +77,7 @@ git blame FizzBuzz.java
 
 <br />
 
-<img style="margin: auto" src="assets/cry.gif"/>
+<img style="margin: auto" src="/public/cry.gif"/>
 
 </v-click>
 
@@ -129,7 +129,7 @@ void givenAFizzBuzzStartThatIsLessThan1_whenIExecuteFizzBuzz_thenIShouldGetAnEmp
 ```
 
 <v-click>
-<img style="margin: auto" src="assets/insane.gif"/>
+<img style="margin: auto" src="/public/insane.gif"/>
 </v-click>
 
 ---
@@ -187,7 +187,7 @@ FizzBuzzTest.testFizzBuzz.received.txt
 
 Utilizing code coverage while running the tests allows us to see paths through the code we haven't tested yet.
 
-<img style="margin: auto" src="assets/code-coverage-1.png"/>
+<img style="margin: auto" src="/public/code-coverage-1.png"/>
 
 ---
 layout: default
@@ -353,7 +353,7 @@ layout: default
 
 # Output
 
-<img style="margin: auto" src="assets/code-coverage-2.png"/>
+<img style="margin: auto" src="/public/code-coverage-2.png"/>
 
 ---
 layout: default
@@ -400,7 +400,7 @@ public static String[] fizzBuzz(int start, int end) {
 }
 ```
 
-<img style="margin: auto" src="assets/activities.gif"/>
+<img style="margin: auto" src="/public/activities.gif"/>
 
 ---
 layout: default
@@ -438,4 +438,4 @@ layout: default
 
 <br />
 
-<img style="margin: auto" src="assets/finished.gif"/>
+<img style="margin: auto" src="/public/finished.gif"/>
