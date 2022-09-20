@@ -378,7 +378,19 @@ When you've achieved 100% code coverage you'll have an output resource showing c
 
 With the ApprovalTests framework, rename the output file from `*.received.txt` to `*.approved.txt` when you're finished getting coverage. From then on, when the test runs it will compare the output against the approved test results and show an error if output changed.
 
-With quick and thorough test coverage you can now be confident that your changes will not break existing functionality.
+With thorough test coverage you can now be confident that your changes will not break existing functionality.
+
+---
+layout: default
+---
+
+# Do I Have to Use A Library?
+
+No! Instead of a library like Approval Tests you could...
+
+- Serialize response object as JSON and do a diff
+- Store binary files and compare
+- Hard-code normal assertions based on existing output
 
 ---
 layout: default
@@ -403,18 +415,6 @@ public static String[] fizzBuzz(int start, int end) {
 ```
 
 <img style="margin: auto" src="/public/activities.gif"/>
-
----
-layout: default
----
-
-# Do I Have to Use A Library?
-
-No! Instead of a library like Approval Tests you could...
-
-- Serialize response object as JSON and do a diff
-- Store binary files and compare
-- Hard-code normal assertions based on existing output
 
 ---
 layout: default
