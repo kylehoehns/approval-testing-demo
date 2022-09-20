@@ -2,7 +2,9 @@
 # try also 'default' to start simple
 theme: apple-basic
 layout: intro-image
-image: './public/head-in-box.jpg'
+image: /public/head-in-box.jpg
+title: Blind Refactoring
+selectable: true
 ---
 
 <div class="absolute bottom-10">
