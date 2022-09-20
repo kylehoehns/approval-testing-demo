@@ -1,34 +1,13 @@
 ---
 # try also 'default' to start simple
-theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-
-background: /assets/head-in-box.jpg
-
-# apply any windi css classes to the current slide
-class: 'text-center'
-# https://sli.dev/custom/highlighters.html
-highlighter: shiki
-# show line numbers in code blocks
-lineNumbers: false
-
-# persist drawings in exports and build
-drawings:
-  persist: false
-# use UnoCSS (experimental)
-css: unocss
+theme: apple-basic
+layout: intro-image
+image: './assets/head-in-box.jpg'
 ---
 
-# Blind Refactoring
-
-Changing Code You Don't Understand
-
-<div class="abs-br m-6 flex gap-2">
-  <a href="https://github.com/kylehoehns/approval-testing-demo" target="_blank" alt="GitHub"
-    class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
+<div class="absolute bottom-10">
+  <h1>Blind Refactoring</h1>
+  <p>Changing code you don't understand</p>
 </div>
 
 ---
@@ -50,7 +29,7 @@ layout: default
 
 # Legacy Code
 
-```java {all|1|3-4|11-13|18|20|all}
+```java
 public static String[] fizzBuzz(int a, int x) {
   String fizZBuzz = null;
   if (a < 1) return new String[0];
@@ -96,17 +75,17 @@ git blame FizzBuzz.java
 740cc984 (Kyle Hoehns 2022-08-04) 1) ...
 ```
 
-</v-click>
-
 <br />
 
-<img v-click style="margin: auto" src="assets/nobody-likes-you.gif"/>
+<img style="margin: auto" src="assets/cry.gif"/>
+
+</v-click>
 
 ---
 
 # Real First Step When Working With Legacy Code
 
-## Get Test Coverage
+Get test coverage however you can
 * unit
 * component/module
 * integration
@@ -120,11 +99,11 @@ layout: default
 
 # Getting Comprehensive Test Coverage Is Hard
 
-
-## You need to
+You need to
 * read long and unmanageable methods
 * research years of changes to a method
 * become an expert in a domain you may not be comfortable with
+* wrangle code that may not be easily testable in the first place
 
 ---
 layout: default
@@ -150,7 +129,7 @@ void givenAFizzBuzzStartThatIsLessThan1_whenIExecuteFizzBuzz_thenIShouldGetAnEmp
 ```
 
 <v-click>
-<img style="margin: auto" src="assets/so-it-begins.gif"/>
+<img style="margin: auto" src="assets/insane.gif"/>
 </v-click>
 
 ---
@@ -167,17 +146,19 @@ layout: default
 
 # Approval Tests
 
-Don't care about what the code does or the output of your tests. Just add enough tests to get to 100% coverage.
+Stop caring about what the code does or the output of your tests. Just add enough test cases to get to 100% coverage.
 
 ```java
 public static String[] fizzBuzz(int a, int x){
-  String fizZBuzz=null;
-  if(a< 1)return new String[0];
+  String fizZBuzz = null;
+  if (a < 1) return new String[0];
   // ...
 }
 ```
 
 ```java
+record FizzBuzzTestCase(int start, int end) {}
+  
 @Test
 void testFizzBuzz() {
     Approvals.verifyAll(
@@ -189,8 +170,6 @@ void testFizzBuzz() {
       )
     );
 }
-
-record FizzBuzzTestCase(int start, int end) {}
 ```
 
 ---
@@ -198,7 +177,7 @@ layout: default
 ---
 
 # Output
-Running the tests will create a new output file that will contain the output of all the executed test cases.
+Running the tests will create a new file that will contain the output of all the executed test cases.
 
 ```text
 FizzBuzzTest.testFizzBuzz.received.txt
@@ -216,9 +195,45 @@ layout: default
 
 # Get More Coverage
 
-Keep writing as many test cases as you want until you get more test coverage
+Keep writing as many test cases as you want until you get adequate test coverage
+```java
+public static String[] fizzBuzz(int a, int x) {
+    // ...
+    if (x < 1) return new String[0];
+    // ...
+```
 
-```java {6-10}
+```java {6}
+@Test
+void testFizzBuzz() {
+    Approvals.verifyAll(
+      new FizzBuzzTestCase[]{
+        new FizzBuzzTestCase(0, 3),
+        new FizzBuzzTestCase(10, 0)
+      },
+      // ...
+    );
+}
+```
+
+---
+layout: default
+---
+
+# Get More Coverage
+
+Keep writing as many test cases as you want until you get adequate test coverage
+```java
+public static String[] fizzBuzz(int a, int x) {
+    // ...
+    if (a == x) {
+      fizZBuzz = "";
+      return new String[]{fizZBuzz};
+    }
+    // ...
+```
+
+```java {7-8}
 @Test
 void testFizzBuzz() {
     Approvals.verifyAll(
@@ -226,25 +241,142 @@ void testFizzBuzz() {
         new FizzBuzzTestCase(0, 3),
         new FizzBuzzTestCase(10, 0),
         new FizzBuzzTestCase(1, 1),
-        new FizzBuzzTestCase(15, 16),
-        new FizzBuzzTestCase(1, 4)
+        new FizzBuzzTestCase(6, 6),
       },
-      testCase -> Arrays.toString(
-        fizzBuzz(testCase.start, testCase.end)
-      )
+      // ...
     );
 }
 ```
 
-<v-click>
-```text {2-5}
+---
+layout: default
+---
+
+# Get More Coverage
+
+Keep writing as many test cases as you want until you get adequate test coverage
+```java
+public static String[] fizzBuzz(int a, int x) {
+    // ...
+    if (a % 15 == 0) fizZBuzz = "FizzBuzz";
+    // ...
+```
+
+```java {9}
+@Test
+void testFizzBuzz() {
+    Approvals.verifyAll(
+      new FizzBuzzTestCase[]{
+        new FizzBuzzTestCase(0, 3),
+        new FizzBuzzTestCase(10, 0),
+        new FizzBuzzTestCase(1, 1),
+        new FizzBuzzTestCase(6, 6),
+        new FizzBuzzTestCase(15, 16),
+      },
+      // ...
+    );
+}
+```
+
+---
+layout: default
+---
+
+# Get More Coverage
+
+Keep writing as many test cases as you want until you get adequate test coverage
+```java
+public static String[] fizzBuzz(int a, int x) {
+    // ...
+    else {
+      if (a % 3 == 0) {
+        fizZBuzz = "Fi" + "zz";
+      }
+    }
+    // ...
+```
+
+```java {10}
+@Test
+void testFizzBuzz() {
+    Approvals.verifyAll(
+      new FizzBuzzTestCase[]{
+        new FizzBuzzTestCase(0, 3),
+        new FizzBuzzTestCase(10, 0),
+        new FizzBuzzTestCase(1, 1),
+        new FizzBuzzTestCase(6, 6),
+        new FizzBuzzTestCase(15, 16),
+        new FizzBuzzTestCase(3, 6),
+      },
+      // ...
+    );
+}
+```
+
+---
+layout: default
+---
+
+# Get More Coverage
+
+Keep writing as many test cases as you want until you get adequate test coverage
+```java
+public static String[] fizzBuzz(int a, int x) {
+    // ...
+    if (a % 5 == 0) {
+      fizZBuzz = "Buzz";
+    }
+    // ...
+```
+
+```java {11}
+@Test
+void testFizzBuzz() {
+    Approvals.verifyAll(
+      new FizzBuzzTestCase[]{
+        new FizzBuzzTestCase(0, 3),
+        new FizzBuzzTestCase(10, 0),
+        new FizzBuzzTestCase(1, 1),
+        new FizzBuzzTestCase(6, 6),
+        new FizzBuzzTestCase(15, 16),
+        new FizzBuzzTestCase(3, 6),
+        new FizzBuzzTestCase(10, 12),
+      },
+      // ...
+    );
+}
+```
+
+---
+layout: default
+---
+
+# Output
+
+<img style="margin: auto" src="assets/code-coverage-2.png"/>
+
+---
+layout: default
+---
+
+# Output
+
+When you've achieved 100% code coverage you'll have an output resource showing current outputs for a variety of combinations of inputs on production code.
+
+```text
 []
 []
 []
 [FizzBuzz]
 [1, 2, Fizz]
+[2, Fizz, 4]
+[Fizz, 4, Buzz]
+[1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz]
 ```
-</v-click>
+
+With the ApprovalTests framework, rename the output file from `*.received.txt` to `*.approved.txt` when you're finished getting coverage. From then on, when the test runs it will compare the output against the approved test results and show an error if output changed.
+
+With quick and thorough test coverage you can now be confident that your changes will not break existing functionality.
 
 ---
 layout: default
@@ -252,20 +384,58 @@ layout: default
 
 # Implement Changes
 
-With the ApprovalTests framework, rename the output file from *.received.txt to *.approved.txt when you're finished getting coverage. From then on, any tests ran will compare their output against the approved test and show an error if output changed.
+```java
+public static String[] fizzBuzz(int start, int end) {
+  if (start < 1 || end < 1) {
+    return new String[0];
+  }
+  return IntStream.range(start, end)
+      .mapToObj(i -> {
+        if (i % 15 == 0) return "FizzBuzz";
+        else if (i % 3 == 0) return "Fizz";
+        else if (i % 5 == 0) return "Buzz";
+        else return String.valueOf(i);
+      })
+      .toArray(String[]::new);
+}
+```
 
-With quick and thorough test coverage you can now be confident that your changes will not break existing functionality.
-
-<img style="margin: auto" src="assets/happy.gif"/>
-
+<img style="margin: auto" src="assets/activities.gif"/>
 
 ---
 layout: default
 ---
 
-# Links
+# Do I Have to Use A Library?
+
+No! Instead of a library like Approval Tests you could...
+
+- Serialize response object as JSON and do a diff
+- Store binary files and compare
+- Hard-code normal assertions based on existing output
+
+---
+layout: default
+---
+
+# Takeaways
+
+- The business probably makes money from the code you're changing. 
+  - It may not be pretty, but that doesn't make it incorrect.
+- It's OK to not understand what a method does as long as you can guarantee you didn't accidentally change it.
+
+---
+layout: default
+---
+
+# More Info
 
 <ul>
-  <li><a href="https://github.com/kylehoehns/approval-testing-demo">Example Code</a></li>
+  <li>Example Code (and slides) can be found on <a href="https://github.com/kylehoehns/approval-testing-demo">GitHub</a></li>
   <li><a href="https://approvaltests.com/">Approval Tests Library</a></li>
+  <li>These slides were built using <a href="https://sli.dev/">Slidev</a></li>
 </ul>
+
+<br />
+
+<img style="margin: auto" src="assets/finished.gif"/>
