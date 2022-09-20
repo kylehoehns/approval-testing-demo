@@ -2,7 +2,7 @@
 # try also 'default' to start simple
 theme: apple-basic
 layout: intro-image
-image: './assets/head-in-box.jpg'
+image: '/public/head-in-box.jpg'
 ---
 
 <div class="absolute bottom-10">
