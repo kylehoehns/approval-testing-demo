@@ -1,12 +1,12 @@
-package com.kylehoehns.approval.demo;
+package com.kylehoehns.blindrefactoring.demo;
 
 import org.approvaltests.Approvals;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static com.kylehoehns.approval.demo.FizzBuzz.fizzBuzz;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static com.kylehoehns.blindrefactoring.demo.FizzBuzz.fizzBuzz;
 
 class FizzBuzzTest {
 
@@ -14,11 +14,11 @@ class FizzBuzzTest {
   void testFizzBuzz() {
     // classic approach - dig into the code, determine what some possible values should be
     // time-consuming, and you're never sure what's "right" vs what it's actually doing.
-    assertArrayEquals(new String[]{"1"}, fizzBuzz(1, 2));
-    assertArrayEquals(new String[]{""}, fizzBuzz(2, 2));
-    assertArrayEquals(new String[]{"1", "2", "Fizz"}, fizzBuzz(1, 4));
-    assertArrayEquals(new String[]{"FizzBuzz"}, fizzBuzz(15, 16));
-    assertArrayEquals(new String[]{"Buzz"}, fizzBuzz(5, 6));
+    Assertions.assertArrayEquals(new String[]{"1"}, fizzBuzz(1, 2));
+    Assertions.assertArrayEquals(new String[]{""}, fizzBuzz(2, 2));
+    Assertions.assertArrayEquals(new String[]{"1", "2", "Fizz"}, fizzBuzz(1, 4));
+    Assertions.assertArrayEquals(new String[]{"FizzBuzz"}, fizzBuzz(15, 16));
+    Assertions.assertArrayEquals(new String[]{"Buzz"}, fizzBuzz(5, 6));
   }
 
   record FizzBuzzTestCase(int start, int end) {}
