@@ -9,7 +9,7 @@ selectable: true
 
 <div class="absolute bottom-10">
   <h1>Blind Refactoring</h1>
-  <p>Changing code you don't understand</p>
+  <p>Changing Code You Don’t Understand</p>
 </div>
 
 ---
