@@ -1,4 +1,4 @@
-package com.kylehoehns.approval.demo;
+package com.kylehoehns.blindrefactoring.demo;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
