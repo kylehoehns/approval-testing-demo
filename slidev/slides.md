@@ -436,10 +436,8 @@ layout: default
 # More Info
 
 <ul>
-  <li><a href="https://approvaltests.com/">Approval Tests Library</a></li>
+  <li><a href="https://approvaltests.com/">Approval Tests Library</a> (supports Node, Java, .Net, Python)</li>
   <li>Example Code can be found on <a href="https://github.com/kylehoehns/approval-testing-demo">GitHub</a></li>
-  <li>Slides hosted online at <a href="https://blind-refactoring.netlify.app">https://blind-refactoring.netlify.app</a></li>
-  <li>These slides were built using <a href="https://sli.dev/">Slidev</a></li>
 </ul>
 
 <br />
